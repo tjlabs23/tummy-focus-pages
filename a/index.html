@@ -92,7 +92,7 @@ header.nav{display:flex;justify-content:space-between;align-items:center;padding
 .rsum{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
 .rsum .num{font-family:'Bebas Neue';font-size:56px;color:var(--teal);line-height:1}
 /* feel band */
-.feel{position:relative;min-height:520px;display:flex;align-items:flex-end;background:#1C3E3C url('../shared/c1s6.jpg') center 25%/cover}
+.feel{position:relative;min-height:520px;display:flex;align-items:flex-end;background:#1C3E3C url('../shared/d_morning.jpg') center 25%/cover}
 .feel:before{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(28,62,60,.96) 0%,rgba(28,62,60,.7) 38%,rgba(28,62,60,0) 70%)}
 .feel .wrap{position:relative;padding-bottom:56px;color:#fff;width:100%}
 .feel h2{font-size:80px}
@@ -173,7 +173,25 @@ footer p{max-width:760px;margin:0 auto 10px}
 .gband .wrap{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:left}
 .gband p{max-width:560px;font-size:17px}
 .hero .seal-mini{display:inline-flex;align-items:center;gap:8px;font-weight:900;font-size:14px;color:#2C6562;background:#fff;border-radius:30px;padding:6px 14px;box-shadow:0 4px 12px rgba(31,75,73,.1)}
+
+a.revlink{color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.bar a.revlink b{color:#F4A7C3}
+dialog#revs{border:0;padding:0;border-radius:20px 20px 0 0;width:100%;max-width:640px;max-height:88vh;margin:auto auto 0;box-shadow:0 -10px 40px rgba(0,0,0,.25)}
+dialog#revs::backdrop{background:rgba(20,30,30,.55)}
+.rv-head{position:sticky;top:0;background:#fff;padding:18px 20px 12px;border-bottom:1px solid rgba(44,101,98,.14);display:flex;justify-content:space-between;align-items:center;z-index:1}
+.rv-head b{font-family:'Bebas Neue';font-size:30px;color:#2C6562;font-weight:400}
+.rv-head span{color:#4a5250;font-size:14px;font-weight:700;display:block}
+.rv-x{border:0;background:#F9E8ED;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;color:#2C6562}
+.rv-list{padding:6px 20px 20px}
+.rv{border-bottom:1px solid rgba(44,101,98,.12);padding:16px 0}
+.rv .s{color:#F2B83A;letter-spacing:1px}
+.rv .t{font-weight:900;margin:4px 0 2px}
+.rv .b{font-size:16px;line-height:1.5}
+.rv .m{font-size:13px;color:#4a5250;font-weight:700;margin-top:6px}
+.rv-more{display:block;width:100%;margin:14px 0 4px;padding:15px;border:2px solid #2C6562;background:#fff;color:#2C6562;font-weight:900;font-size:16px;border-radius:40px;cursor:pointer}
+.rv-note{font-size:12px;color:#4a5250;text-align:center;margin-top:6px}
 </style>
+
 <script>
 /* Tracking: only on the production host so previews/QA don't pollute the pixel. */
 (function(){
@@ -192,13 +210,15 @@ footer p{max-width:760px;margin:0 auto 10px}
  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','GTM-WT4MWLTH');
  // Meta pixel (store pixel)
  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+ // Hyros (JJ, 10-15)
+ var hs=document.createElement('script');hs.type='text/javascript';hs.src='https://224254.t.hyros.com/v1/lst/universal-script?ph=01be9e27086bea56a534993ace52a5cd7b38088eb9e5420fe8c09b155e83f308&tag=!clicked&ref_url='+encodeURI(document.URL);document.head.appendChild(hs);
  fbq('init','1614860232058835');fbq('track','PageView');fbq('track','ViewContent',{content_ids:['41094057885807'],content_type:'product',content_name:'Tummy Focus',value:25.99,currency:'USD'});
 })();
 </script>
 </head>
 <body>
 
-<div class="bar">⭐ 4.7 from <b>582 reviews</b> &nbsp;·&nbsp; Take it tonight, feel lighter tomorrow</div>
+<div class="bar">⭐ 4.7 from <a class="revlink" href="#reviews"><b>582 reviews</b></a> &nbsp;·&nbsp; Take it tonight, feel lighter tomorrow</div>
 <header class="nav"><div class="logo">JJ SMITH</div><a class="mini" href="#buy">Shop Tummy Focus →</a></header>
 
 <section class="hero">
@@ -215,7 +235,7 @@ footer p{max-width:760px;margin:0 auto 10px}
       </ul>
       <div class="cta-row">
         <a class="btn" href="#buy">Try Tummy Focus tonight →</a>
-        <div class="rating"><span class="stars">★★★★★</span> 4.7 from 582 reviews</div>
+        <div class="rating"><span class="stars">★★★★★</span> <a class="revlink" href="#reviews">4.7 from 582 reviews</a></div>
         <span class="seal-mini">✓ 60-Day Happiness Guarantee</span>
       </div>
     </div>
@@ -229,9 +249,9 @@ footer p{max-width:760px;margin:0 auto 10px}
     <h2 class="sec-h">THE OLD WAYS DON'T WORK.</h2>
     <p class="sec-sub">Most of us have tried one of these. Here's why they leave you right back where you started.</p>
     <div class="vgrid" style="text-align:left">
-      <div class="vcard"><div class="ph" style="background-image:url('../shared/c1s1.jpg')"></div><div class="tx">
+      <div class="vcard"><div class="ph" style="background-image:url('../shared/d_lax.jpg')"></div><div class="tx">
         <h3>Laxatives</h3><p>They don't fix it, <b>they force it.</b> Your gut squeezes hard to push things out. That squeeze is the cramps, the run to the bathroom, and the fear of taking it two nights in a row.</p></div></div>
-      <div class="vcard"><div class="ph" style="background-image:url('../shared/c2s1.jpg')"></div><div class="tx">
+      <div class="vcard"><div class="ph" style="background-image:url('../shared/d_fiber.jpg')"></div><div class="tx">
         <h3>More fiber</h3><p>Fiber adds bulk. That's great when things are moving. But when you're already stuck, <b>more bulk just means more stuck.</b> It's like adding cars to a traffic jam.</p></div></div>
       <div class="vcard"><div class="ph" style="background-image:url('../shared/c3s1.jpg')"></div><div class="tx">
         <h3>Just living with it</h3><p>Fine at breakfast, bloated by dinner. Going every 3 or 4 days <b>isn't just "how you are."</b> When things sit, you feel it: heavy, puffy, tired.</p></div></div>
@@ -274,7 +294,7 @@ footer p{max-width:760px;margin:0 auto 10px}
   <div class="wrap center">
     <div class="eyebrow">Real customers</div>
     <h2 class="sec-h">IN THEIR WORDS</h2>
-    <div class="rsum"><span class="num">4.7</span><span class="stars">★★★★★</span><span class="rating">582 reviews on JJSmithOnline</span></div>
+    <div class="rsum"><span class="num">4.7</span><span class="stars">★★★★★</span><a class="rating revlink" href="#reviews">Read all 582 reviews →</a></div>
     <div class="rgrid" style="text-align:left">
       <div class="rev feature"><span class="stars">★★★★★</span><q>"I'm 2 weeks in and have noticed so much improvement in my stomach. <mark>It doesnt cause any cramping which I was afraid of... and I've done senna and other laxatives and this one is really smooth</mark>..My stomach loves it and I'm finally feeling and looking flatter in my tummy!"</q><div class="who">Patty <span>· Oct 2026</span></div></div>
       <div class="rev"><span class="stars">★★★★★</span><q>"Tummy Focus has given me great results! <mark>It helps me stay regular without bloating or cramping</mark>, just empty."</q><div class="who">Sharon C. <span>· Verified buyer</span></div></div>
@@ -326,7 +346,7 @@ footer p{max-width:760px;margin:0 auto 10px}
 
 <section class="offer" id="buy"><div class="wrap"><div class="box">
 <div class="head"><img src="../shared/bottle.jpg" alt="Tummy Focus"><h2 class="sec-h">START TOMORROW LIGHTER.</h2><div class="script" style="font-size:44px">Try Tummy Focus tonight.</div>
-<div class="rating" style="justify-content:center;margin-top:8px"><span class="stars">★★★★★</span> 4.7 from 582 reviews</div></div>
+<div class="rating" style="justify-content:center;margin-top:8px"><span class="stars">★★★★★</span> <a class="revlink" href="#reviews">4.7 from 582 reviews</a></div></div>
 <label class="opt on" data-href="https://shop.jjsmithonline.com/cart/add?id=41094057885807&quantity=1&selling_plan=3665428591&return_to=/checkout"><input type="radio" name="o" checked><span class="dot"></span><span class="main"><span class="t">Subscribe &amp; Save 10%</span><span class="d">1 bottle delivered every 4 weeks. 10% off every order.</span></span><span class="pr">$23.39<s>$30.99</s><small>per bottle</small></span><span class="tag">Best value</span></label>
 <label class="opt" data-href="https://shop.jjsmithonline.com/cart/41094057885807:1"><input type="radio" name="o"><span class="dot"></span><span class="main"><span class="t">One bottle</span><span class="d">30 nights. One-time purchase.</span></span><span class="pr">$25.99<s>$30.99</s></span></label>
 <label class="opt" data-href="https://shop.jjsmithonline.com/cart/41094057951343:1"><input type="radio" name="o"><span class="dot"></span><span class="main"><span class="t">JJ's Focus Trio</span><span class="d">Tummy Focus + Liver Focus + Blood Sugar Focus. Tummy and Liver at bedtime, Blood Sugar with meals.</span></span><span class="pr">$89.99<s>$104.99</s></span></label>
@@ -343,5 +363,24 @@ footer p{max-width:760px;margin:0 auto 10px}
 
 <div class="sticky"><div class="p">From $23.39<br><s>$30.99</s></div><a class="btn" href="#buy">Try Tummy Focus</a></div>
 <script>document.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>{document.querySelectorAll('.opt').forEach(x=>x.classList.remove('on'));o.classList.add('on');o.querySelector('input').checked=true;document.getElementById('buyBtn').href=o.dataset.href;}));</script>
+<dialog id="revs"><div class="rv-head"><div><b>★ 4.7 · 582 reviews</b><span>Real Tummy Focus reviews from JJSmithOnline</span></div><button class="rv-x" aria-label="Close" onclick="document.getElementById('revs').close()">×</button></div><div class="rv-list" id="rvList"></div></dialog>
+<script>
+(function(){
+ var API='https://api.okendo.io/v1',next='/stores/602b956e-b79b-45f9-8fa5-325dae21d2e9/products/shopify-7120259612783/reviews?limit=15&orderBy=date%20desc',busy=false,loaded=false;
+ var dlg=document.getElementById('revs'),list=document.getElementById('rvList');
+ function esc(t){return (t||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+ function more(){if(busy||!next)return;busy=true;var b=document.getElementById('rvMore');if(b)b.textContent='Loading…';
+  fetch(API+next).then(function(r){return r.json()}).then(function(d){
+   if(b)b.remove();
+   (d.reviews||[]).forEach(function(r){var n=r.rating||0;var div=document.createElement('div');div.className='rv';
+    div.innerHTML='<div class="s">'+'★★★★★'.slice(0,n)+'<span style="color:#d9dcdb">'+'★★★★★'.slice(n)+'</span></div><div class="t">'+esc(r.title)+'</div><div class="b">'+esc(r.body)+'</div><div class="m">'+esc((r.reviewer||{}).displayName)+((r.isVerified||(r.reviewer||{}).isVerified)?' · Verified buyer':'')+' · '+esc((r.dateCreated||'').slice(0,10))+'</div>';list.appendChild(div)});
+   next=d.nextUrl||null;busy=false;
+   if(next){var m=document.createElement('button');m.className='rv-more';m.id='rvMore';m.textContent='Show more reviews';m.onclick=more;list.appendChild(m)}
+   else{var e=document.createElement('div');e.className='rv-note';e.textContent='That\'s all of them.';list.appendChild(e)}
+  }).catch(function(){busy=false;list.insertAdjacentHTML('beforeend','<p class="rv-note">Reviews didn\'t load. <a href="https://shop.jjsmithonline.com/products/colon-cleanse">See them on the product page</a>.</p>')})}
+ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.revlink');if(!a)return;e.preventDefault();if(!loaded){loaded=true;more()}dlg.showModal()});
+ dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+})();
+</script>
 </body>
 </html>

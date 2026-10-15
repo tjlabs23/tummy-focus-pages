@@ -54,7 +54,8 @@ footer{background:#1F4B49;color:#cfe0de;font-size:13px;padding:30px 22px 100px;t
 .guar p{font-size:15px;line-height:1.45;color:#1A1B1E}
 .trust{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:13px;font-weight:700;color:#4a5250}
 
-</style><script>
+</style>
+<script>
 /* Tracking: only on the production host so previews/QA don't pollute the pixel. */
 (function(){
  var LIVE=/(^|\.)jjsmithonline\.com$/.test(location.hostname);
@@ -72,6 +73,8 @@ footer{background:#1F4B49;color:#cfe0de;font-size:13px;padding:30px 22px 100px;t
  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','GTM-WT4MWLTH');
  // Meta pixel (store pixel)
  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+ // Hyros (JJ, 10-15)
+ var hs=document.createElement('script');hs.type='text/javascript';hs.src='https://224254.t.hyros.com/v1/lst/universal-script?ph=01be9e27086bea56a534993ace52a5cd7b38088eb9e5420fe8c09b155e83f308&tag=!clicked&ref_url='+encodeURI(document.URL);document.head.appendChild(hs);
  fbq('init','1614860232058835');fbq('track','PageView');fbq('track','ViewContent',{content_ids:['41094057885807'],content_type:'product',content_name:'Tummy Focus',value:25.99,currency:'USD'});
 })();
 </script>

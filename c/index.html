@@ -92,7 +92,8 @@ header.h{display:flex;justify-content:center;padding:12px;border-bottom:1px soli
 .gtee .seal{flex:0 0 54px;height:54px;border-radius:50%;background:var(--p);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:18px;line-height:1}.gtee .seal small{font-size:9px;letter-spacing:1px}
 footer{font-size:11.5px;color:var(--muted);text-align:center;line-height:1.5;padding:26px 18px 40px;max-width:560px;margin:0 auto}
 @media(min-width:700px){.intro h1{font-size:40px}}
-</style><script>
+</style>
+<script>
 /* Tracking: only on the production host so previews/QA don't pollute the pixel. */
 (function(){
  var LIVE=/(^|\.)jjsmithonline\.com$/.test(location.hostname);
@@ -110,6 +111,8 @@ footer{font-size:11.5px;color:var(--muted);text-align:center;line-height:1.5;pad
  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','GTM-WT4MWLTH');
  // Meta pixel (store pixel)
  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+ // Hyros (JJ, 10-15)
+ var hs=document.createElement('script');hs.type='text/javascript';hs.src='https://224254.t.hyros.com/v1/lst/universal-script?ph=01be9e27086bea56a534993ace52a5cd7b38088eb9e5420fe8c09b155e83f308&tag=!clicked&ref_url='+encodeURI(document.URL);document.head.appendChild(hs);
  fbq('init','1614860232058835');fbq('track','PageView');fbq('track','ViewContent',{content_ids:['41094057885807'],content_type:'product',content_name:'Tummy Focus',value:25.99,currency:'USD'});
 })();
 </script>
