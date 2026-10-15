@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>[C] The Gut Check — Find out why you feel backed up and bloated</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--p:#7B3E9D;--p2:#975EBA;--grad:linear-gradient(90deg,#8237a4,#bc458d);--ink:#2f2740;--ink2:#49405a;--muted:#6d6580;--bg:#fbf8fe;--line:#e3d9ee;--pink:#dab1cc;--green:#34a56f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Poppins,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;min-height:100vh}
+img{max-width:100%;display:block}
+.topbar{background:var(--grad);color:#fff;text-align:center;font-size:12px;font-weight:700;letter-spacing:1.5px;padding:8px}
+.logo{font-weight:800;font-size:30px;letter-spacing:1px;color:var(--ink2)}.logo span{color:var(--pink)}
+header.h{display:flex;justify-content:center;padding:12px;border-bottom:1px solid var(--line);background:#fff}
+.app{max-width:560px;margin:0 auto;padding:0 18px 40px}
+.screen{display:none;animation:fade .35s ease}.screen.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* intro */
+.intro{text-align:center;padding-top:22px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:40px;padding:7px 14px;font-size:14px;font-weight:700;color:var(--ink2);box-shadow:0 4px 14px rgba(123,62,157,.08)}
+.chip .s{color:#f2b83a;letter-spacing:1px}
+.intro h1{font-size:34px;line-height:1.15;font-weight:800;margin:20px 0 12px;color:var(--ink)}
+.intro h1 em{font-style:normal;color:var(--p)}
+.intro p.l{font-size:18px;color:var(--ink2);line-height:1.5;max-width:420px;margin:0 auto 22px}
+.cta{display:flex;width:100%;justify-content:center;align-items:center;gap:8px;background:linear-gradient(90deg,#7B3E9D,#975EBA);color:#fff;border:0;font-family:Poppins;font-weight:700;font-size:18px;padding:19px;border-radius:16px;cursor:pointer;box-shadow:0 12px 26px rgba(123,62,157,.32);text-decoration:none}
+.cta:disabled{opacity:.4;box-shadow:none;cursor:default}
+.small{font-size:13px;color:var(--muted);margin-top:10px;font-weight:600}
+.strip{display:flex;gap:10px;overflow:hidden;margin:26px -18px 0;padding:0 18px}
+.strip img{width:46%;flex:0 0 46%;border-radius:18px;aspect-ratio:3/4;object-fit:cover}
+.disc{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:24px;text-align:center}
+/* quiz */
+.qtop{display:flex;align-items:center;gap:12px;padding:16px 0 6px}
+.back{border:0;background:none;font-size:22px;color:var(--ink2);cursor:pointer;width:28px}
+.back[hidden]{visibility:hidden;display:block}
+.bar{flex:1;height:8px;background:#e9e2f1;border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green);border-radius:8px;transition:width .3s}
+.step{font-size:13px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.q h2{font-family:Lora,Georgia,serif;font-size:27px;line-height:1.2;font-weight:700;margin:14px 0 6px;color:var(--ink)}
+.q .hint{color:var(--muted);font-size:15px;margin-bottom:16px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#fff;border:2px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;position:relative;text-align:left;font-family:Poppins;padding:0;transition:border-color .15s,transform .1s}
+.card img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.card b{display:block;padding:11px 12px 13px;font-size:15px;font-weight:700;line-height:1.25;color:var(--ink)}
+.card:after{content:'';position:absolute;top:9px;right:9px;width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid #cfc3dd}
+.card.on{border-color:var(--p)}.card.on:after{background:var(--p) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12l4 4 8-8' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E") center/16px no-repeat;border-color:var(--p)}
+.opts{display:grid;gap:10px}
+.o{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:17px 16px;font-family:Poppins;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left;transition:border-color .15s}
+.o .e{font-size:22px}
+.o.on{border-color:var(--p);background:#f6effb}
+.qfoot{position:sticky;bottom:0;padding:14px 0 calc(14px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 30%)}
+/* email */
+.form{background:#fff;border-radius:20px;padding:24px;box-shadow:0 14px 34px rgba(123,62,157,.1);margin-top:22px}
+.form h2{font-family:Lora,serif;font-size:27px;line-height:1.2;margin-bottom:8px}
+.form p{color:var(--ink2);font-size:15px;margin-bottom:16px}
+.form input{width:100%;font-family:Poppins;font-size:17px;padding:16px;border:2px solid var(--line);border-radius:12px;margin-bottom:10px;outline:none}
+.form input:focus{border-color:var(--p)}
+.consent{font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:10px}
+.lock{display:flex;align-items:center;gap:6px;justify-content:center;font-size:13px;color:var(--muted);margin-top:12px;font-weight:600}
+/* loading */
+.load{text-align:center;padding-top:80px}
+.spin{width:64px;height:64px;border-radius:50%;border:6px solid #e9e2f1;border-top-color:var(--p);margin:0 auto 22px;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.load h2{font-family:Lora,serif;font-size:24px}.load p{color:var(--muted);margin-top:8px}
+/* result */
+.res{padding-top:20px}
+.rlabel{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--p);text-transform:uppercase}
+.res h1{font-family:Lora,serif;font-size:31px;line-height:1.15;margin:6px 0 4px}
+.res h1 em{font-style:normal;color:var(--p)}
+.gauge{background:#fff;border-radius:20px;padding:20px 20px 16px;margin:18px 0;box-shadow:0 10px 28px rgba(123,62,157,.08)}
+.gauge .t{display:flex;justify-content:space-between;font-weight:700;font-size:14px;color:var(--ink2);margin-bottom:12px}
+.gtrack{height:14px;border-radius:14px;background:linear-gradient(90deg,#7fcfa3,#f4d06f,#f0a35e,#d9577a);position:relative}
+.needle{position:absolute;top:-8px;width:6px;height:30px;border-radius:4px;background:var(--ink);box-shadow:0 0 0 3px #fff;transform:translateX(-50%);transition:left 1.2s cubic-bezier(.2,.8,.2,1);left:0}
+.glab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-weight:700;margin-top:10px}
+.read{background:#fff;border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 10px 28px rgba(123,62,157,.08)}
+.read h3{font-size:17px;margin-bottom:10px}
+.read li{list-style:none;padding:6px 0 6px 30px;position:relative;font-size:15.5px;color:var(--ink2);line-height:1.45}
+.read li:before{content:'•';position:absolute;left:10px;color:var(--p);font-weight:900}
+.why{background:var(--grad);color:#fff;border-radius:20px;padding:22px;margin-bottom:16px}
+.why h3{font-size:19px;margin-bottom:8px}.why p{font-size:15.5px;line-height:1.5;opacity:.96}
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px}
+.plan div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px;font-size:13px;line-height:1.35}.plan b{display:block;font-size:14px}
+.quote{background:#fff;border-left:4px solid var(--p);border-radius:0 16px 16px 0;padding:16px 18px;margin-bottom:12px;font-size:15px;color:var(--ink2);line-height:1.5}
+.quote b{display:block;color:var(--ink);font-size:13px;margin-top:6px}.quote .s{color:#f2b83a;letter-spacing:1px}
+/* offer */
+.offer{background:#fff;border-radius:22px;padding:20px;box-shadow:0 14px 34px rgba(123,62,157,.12);margin-top:20px}
+.offer .top{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.offer .top img{width:96px;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 70%,transparent 100%)}
+.offer h2{font-size:21px;line-height:1.2}.offer .rt{font-size:13px;color:var(--muted);font-weight:600;margin-top:4px}.offer .rt span{color:#f2b83a}
+.tier{display:flex;gap:12px;align-items:flex-start;border:2px solid var(--line);border-radius:16px;padding:16px;margin-bottom:10px;cursor:pointer;position:relative}
+.tier .d{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid #b9a9cc;margin-top:2px;position:relative}
+.tier.on{border-color:var(--p);background:#f8f2fc}.tier.on .d{border-color:var(--p)}.tier.on .d:after{content:'';position:absolute;inset:4px;border-radius:50%;background:var(--p)}
+.tier .m{flex:1}.tier .n{font-weight:700;font-size:16px}.tier .x{font-size:13px;color:var(--muted);line-height:1.4;margin-top:2px}
+.tier .pr{text-align:right;font-weight:800;font-size:19px;color:var(--p);white-space:nowrap}.tier .pr s{display:block;font-size:12px;color:#9a91a8;font-weight:600}
+.badge{position:absolute;top:-11px;left:16px;background:var(--grad);color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;padding:4px 10px;border-radius:20px;text-transform:uppercase}
+.gtee{display:flex;gap:12px;align-items:center;background:#f6f1fa;border-radius:14px;padding:14px;margin-top:14px;font-size:13.5px;color:var(--ink2);line-height:1.45}
+.gtee .seal{flex:0 0 54px;height:54px;border-radius:50%;background:var(--p);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:18px;line-height:1}.gtee .seal small{font-size:9px;letter-spacing:1px}
+footer{font-size:11.5px;color:var(--muted);text-align:center;line-height:1.5;padding:26px 18px 40px;max-width:560px;margin:0 auto}
+@media(min-width:700px){.intro h1{font-size:40px}}
+</style></head>
+<body>
+<div class="topbar">✦ TAKE THE 1-MINUTE GUT CHECK</div>
+<header class="h"><div class="logo"><span>JJ</span>SMITH</div></header>
+<main class="app">
+
+<!-- INTRO -->
+<section class="screen on intro" id="s-intro">
+  <div class="chip"><span class="s">★★★★★</span> 582 reviews of Tummy Focus</div>
+  <h1>Backed up, bloated, or tired of <em>laxatives that cramp you?</em></h1>
+  <p class="l">Find out what's really going on with your gut, and what to do about it tonight. Take the free 1-minute Gut Check.</p>
+  <button class="cta" onclick="go(0)">Start my Gut Check →</button>
+  <div class="small">Free · 1 minute · 7 questions</div>
+  <div class="strip"><img src="../shared/q_bloat.jpg" alt=""><img src="../shared/q_heavy.jpg" alt=""><img src="../shared/q_days.jpg" alt=""></div>
+  <p class="disc">This check is not medical advice. It cannot diagnose anything and is not a substitute for seeing a doctor. Individual results vary.</p>
+</section>
+
+<!-- QUIZ -->
+<section class="screen q" id="s-quiz">
+  <div class="qtop"><button class="back" id="back" onclick="prev()" aria-label="Back">←</button><div class="bar"><i id="barfill"></i></div><div class="step" id="stepn">1 of 7</div></div>
+  <div id="qbody"></div>
+  <div class="qfoot"><button class="cta" id="next" onclick="next()" disabled>Continue</button></div>
+</section>
+
+<!-- EMAIL -->
+<section class="screen" id="s-email">
+  <div class="qtop"><button class="back" onclick="show('s-quiz');render()">←</button><div class="bar"><i style="width:100%"></i></div><div class="step">Done</div></div>
+  <div class="form">
+    <h2>Your Gut Check result is ready.</h2>
+    <p>Where should we send your personal result and bedtime plan?</p>
+    <input id="fname" placeholder="First name" autocomplete="given-name">
+    <input id="email" type="email" placeholder="Email address" autocomplete="email">
+    <button class="cta" onclick="submitLead()">Show my result →</button>
+    <div class="lock">🔒 We never share your email.</div>
+    <p class="consent">By continuing you agree to receive emails from JJ Smith. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- LOADING -->
+<section class="screen load" id="s-load"><div class="spin"></div><h2>Reading your answers…</h2><p id="loadmsg">Checking how often you go</p></section>
+
+<!-- RESULT + OFFER -->
+<section class="screen res" id="s-res">
+  <div class="rlabel">Your Gut Check result</div>
+  <h1 id="rtitle"></h1>
+  <div class="gauge"><div class="t"><span>How much it's affecting you</span><span id="glevel"></span></div><div class="gtrack"><div class="needle" id="needle"></div></div><div class="glab"><span>Low</span><span>Moderate</span><span>High</span></div></div>
+  <a class="cta" href="#offer" style="margin-bottom:16px">See my plan ↓</a>
+  <div class="read"><h3>What you told us</h3><ul id="readback"></ul></div>
+  <div class="why"><h3 id="whyh">What your gut needs: softening, not force</h3><p id="whyp"></p>
+    <div class="plan"><div><b>Bedtime</b>3 capsules + a full glass of water</div><div><b>Overnight</b>Magnesium draws water in*</div><div><b>Morning</b>Go gently, feel lighter</div></div></div>
+  <div class="quote"><span class="s">★★★★★</span> "It doesnt cause any cramping which I was afraid of... and I've done senna and other laxatives and this one is really smooth."<b>Patty</b></div>
+  <div class="quote"><span class="s">★★★★★</span> "I could only poop about twice per week and was always bloated… now I do 3 capsules at bedtime, and now I go every morning. like clockwork."<b>Anne</b></div>
+
+  <div class="offer" id="offer">
+    <div class="top"><img src="../shared/bottle.jpg" alt="Tummy Focus"><div><h2 id="ofh">Your plan: Tummy Focus</h2><div class="rt"><span>★★★★★</span> 4.7 from 582 reviews</div></div></div>
+    <div class="tier on" data-href="https://shop.jjsmithonline.com/cart/add?id=41094057885807&quantity=1&selling_plan=3665428591&return_to=/checkout"><span class="badge">Best value</span><span class="d"></span><span class="m"><span class="n">Subscribe &amp; Save 10%</span><span class="x" style="display:block">1 bottle every 4 weeks. 10% off every order.</span></span><span class="pr">$23.39<s>$30.99</s></span></div>
+    <div class="tier" data-href="https://shop.jjsmithonline.com/cart/41094057885807:1"><span class="d"></span><span class="m"><span class="n">One bottle</span><span class="x" style="display:block">30 nights, one-time.</span></span><span class="pr">$25.99<s>$30.99</s></span></div>
+    <div class="tier" data-href="https://shop.jjsmithonline.com/cart/41094057951343:1"><span class="d"></span><span class="m"><span class="n">JJ's Focus Trio</span><span class="x" style="display:block">Tummy + Liver + Blood Sugar Focus</span></span><span class="pr">$89.99<s>$104.99</s></span></div>
+    <a class="cta" id="buy" href="https://shop.jjsmithonline.com/cart/add?id=41094057885807&quantity=1&selling_plan=3665428591&return_to=/checkout">Start tonight →</a>
+    <div class="gtee"><div class="seal">60<small>DAYS</small></div><div><b>60-Day Happiness Guarantee.</b> Not happy? Contact us within 60 days for your money back on up to 2 bottles (US orders).</div></div>
+  </div>
+</section>
+</main>
+<footer>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. This check is not medical advice. Check with your doctor before use if you have kidney problems, are pregnant or nursing, or take medication. Reviews are from real JJ Smith customers; individual results vary. © JJ Smith</footer>
+
+<script>
+// ---- Lead capture wiring (NOT LIVE in this preview) ----
+// Fill these to send results to Klaviyo the same way the HF quiz does (event → flow).
+const CONFIG={klaviyoCompanyId:null, eventName:'TF Gut Check Completed'};
+const S='../shared/';
+const Q=[
+ {k:'symptoms',t:'What has been bothering you lately?',h:'Select all that apply.',multi:true,cards:[
+   ['bloat','Bloated by evening','q_bloat.jpg'],['days','Going only every few days','q_days.jpg'],['hard','Hard to go, lots of straining','q_hard.jpg'],
+   ['heavy','Heavy, puffy, tired','q_heavy.jpg'],['cramps','Cramps from laxatives','q_cramps.jpg'],['gas','Gas and discomfort','q_gas.jpg']]},
+ {k:'freq',t:'How often do you usually go?',h:'Be honest, nobody sees this but you.',opts:[['daily','Every day','🙂',0],['2','Every 2 days','😐',1],['34','Every 3–4 days','😣',2],['less','Less than twice a week','😩',3]]},
+ {k:'tried',t:'What have you tried?',h:'Select all that apply.',multi:true,opts:[['lax','Stimulant laxatives (senna, bisacodyl)','💊'],['fiber','Fiber powders or supplements','🥤'],['tea','Detox or "tummy" teas','🍵'],['pro','Probiotics','🦠'],['none','Nothing yet','🤷🏾‍♀️']]},
+ {k:'result',t:'How did that work out?',h:'Pick the closest one.',opts:[['cramp','Cramps and a rush to the bathroom','😖',2],['bloat','I felt even more bloated','🎈',2],['stopped','It worked, then stopped working','📉',2],['na','I haven\'t really tried anything','➖',0]]},
+ {k:'when',t:'When is the bloating worst?',h:'Pick one.',opts:[['am','In the morning','🌅',0],['pm','By the afternoon','☀️',1],['eve','By dinner and evening','🌙',1],['all','All day long','⏳',2]]},
+ {k:'impact',t:'How much does it affect your day?',h:'Your mood, your clothes, your energy.',opts:[['1','Barely, it\'s just annoying','1️⃣',0],['2','Some days it really bugs me','2️⃣',1],['3','A lot, I plan around it','3️⃣',2],['4','It runs my day','4️⃣',3]]},
+ {k:'age',t:'What is your age?',h:'Digestion often slows down as we get older.',opts:[['u40','Under 40','',0],['40','40–49','',0],['50','50–59','',0],['60','60+','',0]]},
+];
+let i=0; const A={};
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');scrollTo(0,0)}
+function go(n){i=n;show('s-quiz');render()}
+function render(){
+  const q=Q[i];document.getElementById('stepn').textContent=(i+1)+' of '+Q.length;
+  document.getElementById('barfill').style.width=((i)/Q.length*100+6)+'%';
+  document.getElementById('back').hidden=i===0;
+  let h='<h2>'+q.t+'</h2><div class="hint">'+q.h+'</div>';
+  const sel=A[q.k]||(q.multi?[]:null);
+  if(q.cards){h+='<div class="cards">'+q.cards.map(c=>'<button class="card'+(sel.includes(c[0])?' on':'')+'" data-v="'+c[0]+'"><img src="'+S+c[2]+'" alt=""><b>'+c[1]+'</b></button>').join('')+'</div>'}
+  else{h+='<div class="opts">'+q.opts.map(o=>{const on=q.multi?sel.includes(o[0]):sel===o[0];return '<button class="o'+(on?' on':'')+'" data-v="'+o[0]+'">'+(o[2]?'<span class="e">'+o[2]+'</span>':'')+o[1]+'</button>'}).join('')+'</div>'}
+  document.getElementById('qbody').innerHTML=h;
+  document.querySelectorAll('#qbody [data-v]').forEach(b=>b.onclick=()=>pick(b.dataset.v));
+  document.getElementById('next').disabled=!(q.multi?(A[q.k]||[]).length:A[q.k]);
+  document.getElementById('next').style.display=q.multi?'flex':'none';
+}
+function pick(v){const q=Q[i];
+  if(q.multi){let s=A[q.k]||[];if(v==='none')s=['none'];else{s=s.filter(x=>x!=='none');s=s.includes(v)?s.filter(x=>x!==v):[...s,v]}A[q.k]=s;render()}
+  else{A[q.k]=v;render();setTimeout(next,260)}}
+function next(){if(i<Q.length-1){i++;render()}else show('s-email')}
+function prev(){if(i>0){i--;render()}}
+function score(){let s=0;
+  s+=Math.min((A.symptoms||[]).length,4)*0.75;
+  const val=(k)=>{const o=Q.find(q=>q.k===k).opts.find(o=>o[0]===A[k]);return o?o[3]||0:0};
+  s+=val('freq')*1.3+val('result')+val('when')+val('impact')*1.2;
+  if((A.tried||[]).includes('lax'))s+=0.5;
+  return Math.max(0,Math.min(1,s/14.5));}
+function submitLead(){
+  const e=document.getElementById('email').value.trim(),n=document.getElementById('fname').value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){document.getElementById('email').style.borderColor='#d9577a';return}
+  if(CONFIG.klaviyoCompanyId){fetch('https://a.klaviyo.com/client/events/?company_id='+CONFIG.klaviyoCompanyId,{method:'POST',headers:{'Content-Type':'application/json',revision:'2024-10-15'},body:JSON.stringify({data:{type:'event',attributes:{metric:{data:{type:'metric',attributes:{name:CONFIG.eventName}}},profile:{data:{type:'profile',attributes:{email:e,first_name:n}}},properties:{...A,score:score()}}}})}).catch(()=>{})}
+  if(window.fbq)fbq('track','Lead');
+  show('s-load');const m=['Checking how often you go','Looking at what you have tried','Building your bedtime plan'];let k=0;
+  const t=setInterval(()=>{k++;if(k<m.length)document.getElementById('loadmsg').textContent=m[k]},700);
+  setTimeout(()=>{clearInterval(t);result(n)},2200);}
+function result(n){
+  const sc=score(),lvl=sc<0.34?'Low':sc<0.67?'Moderate':'High';
+  const name=n?n.split(' ')[0]+', y':'Y';
+  const pat=(A.symptoms||[]).includes('bloat')||A.when==='eve'||A.when==='all'?'Backed Up &amp; Bloated':'Slow &amp; Stuck';
+  document.getElementById('rtitle').innerHTML=name+'our gut pattern: <em>'+pat+'</em>';
+  document.getElementById('glevel').textContent=lvl;
+  setTimeout(()=>document.getElementById('needle').style.left=(6+sc*88)+'%',150);
+  const lab=(k)=>{const q=Q.find(q=>q.k===k);const pool=q.opts||q.cards;return (Array.isArray(A[k])?A[k]:[A[k]]).map(v=>{const o=pool.find(o=>o[0]===v);return o?o[1]:''}).filter(Boolean)};
+  const r=[];
+  if(lab('symptoms').length)r.push('You\'re dealing with: '+lab('symptoms').join(', ').toLowerCase()+'.');
+  if(A.freq)r.push('You usually go '+lab('freq')[0].toLowerCase()+'.');
+  if(A.tried&&!A.tried.includes('none'))r.push('You\'ve tried '+lab('tried').map(x=>x.replace(/ \(.*\)/,'')).join(', ').toLowerCase()+'.');
+  if(A.result&&A.result!=='na')r.push('What happened: '+lab('result')[0].toLowerCase()+'.');
+  if(A.when)r.push('Bloating is worst '+lab('when')[0].toLowerCase().replace('in the ','in the ')+'.');
+  document.getElementById('readback').innerHTML=r.map(x=>'<li>'+x+'</li>').join('');
+  let w='When things sit too long, they get harder and harder to pass, and that\'s when you feel heavy, puffy and bloated. ';
+  if((A.tried||[]).includes('lax')||A.result==='cramp')w+='Stimulant laxatives try to fix that by forcing your gut to squeeze, which is where the cramps and the rush come from. ';
+  else if((A.tried||[]).includes('fiber')||A.result==='bloat')w+='Fiber adds bulk, which helps when things are moving, but when you\'re already stuck it can leave you feeling even fuller. ';
+  w+='What helps is softening what\'s stuck so it can move on its own. That\'s what Tummy Focus does: magnesium draws water in overnight, so you can go in the morning without the cramping rush.*';
+  document.getElementById('whyp').textContent=w;
+  document.getElementById('ofh').textContent=(n?n.split(' ')[0]+'\'s':'Your')+' plan: Tummy Focus at bedtime';
+  show('s-res');}
+document.querySelectorAll('.tier').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tier').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('buy').href=t.dataset.href});
+</script>
+</body></html>
