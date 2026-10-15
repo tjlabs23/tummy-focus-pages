@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lp="tf-a-sales">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -174,6 +174,27 @@ footer p{max-width:760px;margin:0 auto 10px}
 .gband p{max-width:560px;font-size:17px}
 .hero .seal-mini{display:inline-flex;align-items:center;gap:8px;font-weight:900;font-size:14px;color:#2C6562;background:#fff;border-radius:30px;padding:6px 14px;box-shadow:0 4px 12px rgba(31,75,73,.1)}
 </style>
+<script>
+/* Tracking: only on the production host so previews/QA don't pollute the pixel. */
+(function(){
+ var LIVE=/(^|\.)jjsmithonline\.com$/.test(location.hostname);
+ var LP=document.documentElement.getAttribute('data-lp')||'tf';
+ // carry ad source (utm_*, fbclid) + which page version into every Shopify checkout link
+ var q=new URLSearchParams(location.search),keep=new URLSearchParams();
+ ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){if(q.get(k))keep.set(k,q.get(k))});
+ if(!keep.get('utm_content'))keep.set('utm_content',LP);
+ window.tfLink=function(href){try{var u=new URL(href,location.href);if(!/shop\.jjsmithonline\.com$/.test(u.hostname))return href;keep.forEach(function(v,k){u.searchParams.set(k,v)});if(u.pathname.indexOf('/cart/4')===0)u.searchParams.set('attributes[landing_page]',LP);return u.toString()}catch(e){return href}};
+ function fix(){document.querySelectorAll('a[href*="shop.jjsmithonline.com"]').forEach(function(a){a.href=tfLink(a.getAttribute('href'))});document.querySelectorAll('[data-href*="shop.jjsmithonline.com"]').forEach(function(a){a.dataset.href=tfLink(a.dataset.href)})}
+ document.addEventListener('DOMContentLoaded',fix);
+ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="shop.jjsmithonline.com"]');if(a){a.href=tfLink(a.href);if(window.fbq)fbq('track','InitiateCheckout',{content_ids:['41094057885807'],content_type:'product',currency:'USD'})}},true);
+ if(!LIVE)return;
+ // Google Tag Manager (same container as the HF pages)
+ (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','GTM-WT4MWLTH');
+ // Meta pixel (store pixel)
+ !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+ fbq('init','1614860232058835');fbq('track','PageView');fbq('track','ViewContent',{content_ids:['41094057885807'],content_type:'product',content_name:'Tummy Focus',value:25.99,currency:'USD'});
+})();
+</script>
 </head>
 <body>
 
